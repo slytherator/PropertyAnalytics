@@ -28,7 +28,7 @@ public class PropertyAnalysis {
 
     public static void main(String[] args) throws IOException, ParseException {
         CSVReader reader = new CSVReader(new FileReader("[DATA_PATH]/pp-complete-sorted.csv"));
-        writer = new BufferedWriter(new FileWriter("price_evolutions.csv"));
+        writer = new BufferedWriter(new FileWriter("[DATA_PATH]/price_evolutions.csv"));
         writer.write("date,x,y,g\n");
 
         while ((data = reader.readNext()) != null){

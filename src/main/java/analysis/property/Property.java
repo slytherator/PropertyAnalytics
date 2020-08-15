@@ -1,7 +1,6 @@
 package analysis.property;
 
 import java.util.Arrays;
-import java.util.Date;
 
 public class Property {
     public final String id;
@@ -23,42 +22,6 @@ public class Property {
         this.holding = holding;
         this.postcode = postcode;
         this.location = location;
-    }
-
-    public double[] getState(long ts, Property benchmark){
-        return new double[]{
-            ts - lastSold,
-            ts - lastEstimate,
-            lastEstimate - lastSold,
-            lastSoldPrice,
-            (lastEstimate - lastSoldPrice)/lastSoldPrice,
-            newBuild ? 1 : 0,
-            holding.charAt(0),
-            type.charAt(0),
-            location[0],
-            location[1],
-            (location[0] - benchmark.location[0]) * (location[0] - benchmark.location[0]) + (location[1] - benchmark.location[1]) * (location[1] - benchmark.location[1]),
-            lastPriceEstimate - benchmark.lastPriceEstimate,
-            holding.equals(benchmark.holding) ? 1 : 0,
-            type.equals(benchmark.type) ? 1 : 0,
-        };
-    }
-
-    public double[] getState(Date dt){
-        long ts = dt.getTime();
-        return new double[]{
-                ts - lastSold,
-                ts - lastEstimate,
-                lastEstimate - lastSold,
-                lastSoldPrice,
-                (lastEstimate - lastSoldPrice)/lastSoldPrice,
-                newBuild ? 1 : 0,
-                holding.charAt(0),
-                type.charAt(0),
-                location[0],
-                location[1],
-                dt.getMonth()
-        };
     }
 
     @Override
